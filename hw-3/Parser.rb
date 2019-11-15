@@ -41,7 +41,7 @@ class Parser < Scanner
 	def match(dtype)
       	if (@lookahead.type != dtype)
          	puts "Expected #{dtype} found #{@lookahead.type}"
-					@errors = @errors + 1
+					@errors+=1
       	end
       	consume()
 	end
@@ -117,8 +117,9 @@ class Parser < Scanner
 			if (@lookahead.type == Token::RPAREN)
 				puts "Found RPAREN Token: #{@lookahead.text}"
 				match(Token::RPAREN)
+			else
+				match(Token::RPAREN)
 			end
-
 		elsif (@lookahead.type == Token::INT)
 			puts "Found INT Token: #{@lookahead.text}"
 			match(Token::INT)
